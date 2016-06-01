@@ -35,71 +35,9 @@
                 </div>
 <script>
 $(document).ready(function(){
-    $('#u').keyup(function(ev){
-        var code = ev.which; 
-        if (code == 13){ $('#sign-in').click(); }
-    });
-
-    $('#p').keyup(function(ev){
-        var code = ev.which; 
-        if (code == 13){ $('#sign-in').click(); }
-    });
-
-    $('#sign-in').click(function(){
-        var username = $('#u');
-        var password = $('#p');
-
-        $('.login-form').hide('fade', 250, function(){ 
-            $('#login-loading').show('fade', 250);
-
-            var _login = "<?php echo base_url(); ?>index.php/App/auth";
-            $.ajax({
-                url:_login, type: "POST", data: {u: username.val(), p:password.val() },
-                dataType: 'json', success: function(data){
-
-                    if (data.status){
-
-                        var m ='<div class="alert alert-success alert-dismissible" role="alert">'
-                        m += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                        m += '<strong>Please wait!</strong> Transferring you to the application.</div>';
-
-                        $('#login-status').html(m);
-                        $('#login-loading').hide('fade', 250, function(){
-                            $('.login-form').show('fade', 250);
-                        });
-
-                        var _url = "<?php echo base_url(); ?>index.php/App/formPage?name="+data.name;
-                        $.ajax({
-                            url: _url, success: function(data){
-                                $('#app-container').html(data);
-                            }
-                        });
-
-
-                    } else {
-                        var m ='<div class="alert alert-warning alert-dismissible" role="alert">'
-                        m += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                        m += '<strong>Ooops!</strong> We can\'t find your username/password. Please contact kieth for your username/password.</div>';
-
-                        $('#login-status').html(m);
-                        $('#login-loading').hide('fade', 250, function(){
-                            $('.login-form').show('fade', 250);
-                        });
-                        
-                    }
-
-                }, error: function(){
-                    var m ='<div class="alert alert-warning alert-dismissible" role="alert">'
-                    m += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                    m += '<strong>Ooops!</strong> There seems to be an error in logging in. Please try again.</div>';
-
-                        $('#login-status').html(m);
-                        $('#login-loading').hide('fade', 250, function(){
-                            $('.login-form').show('fade', 250);
-                        });
-                }
-            })
-        });
-    });
+    $('#u').keyup(function(ev){var code=ev.which;if(code==13){$('#sign-in').click();}});$('#p').keyup(function(ev){var code=ev.which;if(code==13){$('#sign-in').click();}});$('#sign-in').click(function(){var username=$('#u');var password=$('#p');$('.login-form').hide('fade',250,function(){$('#login-loading').show('fade',250);var _login="<?php echo base_url(); ?>index.php/App/auth";$.ajax({url:_login,type:"POST",data:{u:username.val(),p:password.val()},dataType:'json',success:function(data){if(data.status){var m='<div class="alert alert-success alert-dismissible" role="alert">'
+m+='<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';m+='<strong>Please wait!</strong> Transferring you to the application.</div>';$('#login-status').html(m);$('#login-loading').hide('fade',250,function(){$('.login-form').show('fade',250);});var _url="<?php echo base_url(); ?>index.php/App/formPage?name="+data.name;$.ajax({url:_url,success:function(data){$('#app-container').html(data);}});}else{var m='<div class="alert alert-warning alert-dismissible" role="alert">'
+m+='<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';m+='<strong>Ooops!</strong> We can\'t find your username/password. Please contact kieth for your username/password.</div>';$('#login-status').html(m);$('#login-loading').hide('fade',250,function(){$('.login-form').show('fade',250);});}},error:function(){var m='<div class="alert alert-warning alert-dismissible" role="alert">'
+m+='<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';m+='<strong>Ooops!</strong> There seems to be an error in logging in. Please try again.</div>';$('#login-status').html(m);$('#login-loading').hide('fade',250,function(){$('.login-form').show('fade',250);});}})});});
 });
 </script>
