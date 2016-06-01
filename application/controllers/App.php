@@ -61,10 +61,8 @@ class App extends CI_Controller {
 		
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
-		$pdf->SetAuthor('Nicola Asuni');
-		$pdf->SetTitle('TCPDF Example 006');
-		$pdf->SetSubject('TCPDF Tutorial');
-		$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+		$pdf->SetAuthor('scalaberch');
+		$pdf->SetTitle('Generated PDF Document');
 
 		// set margins
 		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
